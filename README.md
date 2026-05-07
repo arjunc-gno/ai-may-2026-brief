@@ -14,13 +14,26 @@ Stats endpoint:
 https://ai.g-nosis.com/stats?token=<STATS_TOKEN>
 ```
 
-Setup/deploy steps when Cloudflare auth is available:
+On-demand check from the repo:
 
 ```bash
-npx wrangler d1 create ai_may_2026_brief_stats
-# copy the returned database_id into wrangler.toml
-npx wrangler secret put STATS_TOKEN
-npx wrangler deploy
+./check-download-stats.sh | python3 -m json.tool
+```
+
+The script reads `STATS_TOKEN` from macOS Keychain entry:
+
+```text
+Service: G-Nosis API: ai-may-2026-brief-stats-token
+Account: arjunc@g-nosis.com
+```
+
+Cloudflare resources:
+
+```text
+Account ID: 8a9b68fe08ceae5d4e5826c6f25dcb31
+D1 DB: ai_may_2026_brief_stats
+D1 database_id: cbd8a034-6023-42d9-86a7-b0d61914a320
+Worker: ai-may-2026-brief
 ```
 
 The Worker creates the table automatically on first download/stats request. Stored fields:
