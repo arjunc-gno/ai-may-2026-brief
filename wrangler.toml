@@ -1,5 +1,12 @@
 main = "src-worker.js"
 name = "ai-may-2026-brief"
 compatibility_date = "2026-05-07"
+account_id = "8a9b68fe08ceae5d4e5826c6f25dcb31"
 
-assets = { directory = "." }
+assets = { directory = "public" }
+
+# Durable PDF download counter.
+[[d1_databases]]
+binding = "DB"
+database_name = "ai_may_2026_brief_stats"
+database_id = "cbd8a034-6023-42d9-86a7-b0d61914a320"
