@@ -74,6 +74,13 @@
     .signup h2{font-size:31px;letter-spacing:-1px;line-height:1.06;margin:0 0 12px}
     .signup p{color:#D8E7F5;margin:0;font-size:16px;line-height:1.5}
     .form-note{background:rgba(11,18,32,.62);border:1px solid var(--line);border-radius:22px;padding:18px;color:#D8E7F5;font-size:14px;line-height:1.45;}
+    .signup-form{background:rgba(11,18,32,.62);border:1px solid var(--line);border-radius:22px;padding:18px;display:grid;gap:12px;}
+    .signup-form label{font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:850;color:#CFFCF6;}
+    .signup-form input{width:100%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:var(--white);border-radius:14px;padding:13px 14px;font:inherit;font-size:15px;outline:none;}
+    .signup-form input::placeholder{color:#91A7BC;}
+    .signup-form input:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(20,184,166,.14);}
+    .signup-form button{border:0;cursor:pointer;font:inherit;}
+    .privacy{font-size:12px;line-height:1.4;color:#AFC0D3;margin:0;}
     footer{padding:34px 0 44px;color:#92A5BA;font-size:13px;display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);margin-top:30px;}
     @media (max-width:900px){.hero{grid-template-columns:1fr;padding-top:42px}.grid{grid-template-columns:1fr 1fr}.signup{grid-template-columns:1fr}.nav-note{text-align:left}header{align-items:flex-start;flex-direction:column}.visual{min-height:360px}}
     @media (max-width:560px){.wrap{width:min(100% - 26px,1120px)}h1{letter-spacing:-2px}.grid{grid-template-columns:1fr}.tile{min-height:auto}.cta-row .btn{width:100%}footer{flex-direction:column}.brief-title{font-size:25px}}
@@ -139,14 +146,23 @@
         </div>
       </section>
 
-      <section class="signup">
+      <section class="signup" id="signup">
         <div>
-          <h2>For practical operators tracking AI development.</h2>
-          <p>This landing page is designed to support the upcoming free AI Development Newsletter from G-Nosis Systems — concise, prioritized, and focused on business impact.</p>
+          <h2>Get reminders for future AI briefs.</h2>
+          <p>Join the free G-Nosis AI Development Newsletter list. We’ll send concise, practical reminders when new business-focused AI briefings are published.</p>
         </div>
-        <div class="form-note">
-          <strong>Next step:</strong> connect this page to the newsletter signup form once the publishing platform is selected. For now, the primary call-to-action is the PDF download.
-        </div>
+        <form class="signup-form" action="https://formsubmit.co/veronica@g-nosis.com" method="POST">
+          <input type="hidden" name="_subject" value="New AI Development Newsletter signup" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://ai.g-nosis.com/?signup=success" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required />
+          <input name="source" type="hidden" value="May 2026 AI Impact Brief landing page" />
+          <button class="btn btn-primary" type="submit">Remind me about future briefs</button>
+          <p class="privacy">No spam. Just practical AI development briefings and launch reminders from G-Nosis Systems. You can unsubscribe by replying to any reminder.</p>
+        </form>
       </section>
     </main>
 
