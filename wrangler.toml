@@ -1,3 +1,4 @@
+main = "src-worker.js"
 name = "ai-may-2026-brief"
 compatibility_date = "2026-05-07"
 
