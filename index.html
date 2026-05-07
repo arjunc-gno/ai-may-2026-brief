@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>May 2026 AI Impact Brief | G-Nosis Systems</title>
+  <meta name="description" content="A five-page G-Nosis Systems briefing on the highest-impact AI developments of May 2026: enterprise AI services, agentic workflows, finance agents, workflow templates, and AI infrastructure." />
+  <meta property="og:title" content="May 2026 AI Impact Brief" />
+  <meta property="og:description" content="Five practical AI developments ranked by business impact — from G-Nosis Systems." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0B1220" />
+  <style>
+    :root {
+      --navy:#0B1220;
+      --panel:#111B2F;
+      --blue:#2563EB;
+      --teal:#14B8A6;
+      --white:#F5FAFF;
+      --muted:#B7C7D9;
+      --line:rgba(255,255,255,.14);
+      --shadow:0 24px 70px rgba(0,0,0,.34);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Avenir Next, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color:var(--white);
+      background:
+        radial-gradient(circle at 80% 8%, rgba(20,184,166,.28), transparent 30%),
+        radial-gradient(circle at 10% 88%, rgba(37,99,235,.26), transparent 36%),
+        linear-gradient(135deg,#050814 0%, var(--navy) 42%, #102A55 100%);
+      min-height:100vh;
+    }
+    a{color:inherit}
+    .wrap{width:min(1120px, calc(100% - 40px)); margin:0 auto;}
+    header{padding:28px 0 18px; display:flex; align-items:center; justify-content:space-between; gap:24px;}
+    .brand{display:flex; align-items:center; gap:13px; text-decoration:none;}
+    .logo{width:48px;height:48px;border-radius:999px;background:linear-gradient(135deg,var(--blue),var(--teal));display:grid;place-items:center;box-shadow:0 12px 34px rgba(20,184,166,.28)}
+    .logo svg{width:35px;height:35px}
+    .brand-name{font-weight:850;letter-spacing:-.45px;font-size:18px;line-height:1.05}
+    .tag{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);font-weight:750;margin-top:3px}
+    .nav-note{font-size:13px;color:var(--muted);font-weight:650;text-align:right}
+    .hero{padding:74px 0 52px; display:grid; grid-template-columns:1.08fr .92fr; gap:42px; align-items:center;}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);color:#CFFCF6;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:850;margin-bottom:22px;}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 18px var(--teal)}
+    h1{font-size:clamp(42px, 6vw, 74px);line-height:.94;letter-spacing:-3.2px;margin:0 0 24px;}
+    .lead{font-size:clamp(18px,2.15vw,23px);line-height:1.42;color:#D8E7F5;max-width:720px;margin:0 0 30px;}
+    .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:30px;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 20px;border-radius:16px;text-decoration:none;font-weight:850;border:1px solid transparent;transition:.18s ease;}
+    .btn-primary{background:linear-gradient(135deg,var(--blue),var(--teal));color:white;box-shadow:0 18px 42px rgba(37,99,235,.28)}
+    .btn-secondary{background:rgba(255,255,255,.07);border-color:var(--line);color:#E8F2FF}
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+    .trust{font-size:13px;color:var(--muted);margin-top:14px;}
+    .visual{position:relative;min-height:430px;border:1px solid var(--line);border-radius:34px;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.045));box-shadow:var(--shadow);overflow:hidden;padding:24px;}
+    .visual:before{content:"";position:absolute;inset:-40%;background:radial-gradient(circle, rgba(20,184,166,.26), transparent 34%);animation:float 9s ease-in-out infinite alternate;}
+    @keyframes float{from{transform:translate(-6%, -2%)}to{transform:translate(8%, 4%)}}
+    .brief-card{position:relative;height:100%;border-radius:25px;background:#F8FAFC;color:#0F172A;padding:26px;box-shadow:0 20px 70px rgba(0,0,0,.25);display:flex;flex-direction:column;justify-content:space-between;}
+    .brief-rule{height:4px;width:68%;background:linear-gradient(90deg,var(--blue),var(--teal));border-radius:99px;margin-bottom:22px;}
+    .brief-title{font-size:31px;line-height:1.02;letter-spacing:-1.2px;font-weight:900;margin-bottom:16px;color:#0B1220;}
+    .brief-sub{font-size:14px;line-height:1.48;color:#475569;font-weight:650;}
+    .rank-list{display:grid;gap:10px;margin-top:24px;}
+    .rank{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid #E2E8F0;border-radius:16px;background:white;}
+    .num{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--teal));color:white;display:grid;place-items:center;font-weight:900;font-size:13px;flex:0 0 auto;}
+    .rank span{font-weight:800;font-size:13px;color:#172033}
+    section{padding:42px 0;}
+    .section-title{font-size:34px;line-height:1.05;letter-spacing:-1.2px;margin:0 0 12px;}
+    .section-lead{color:#CDDAE8;font-size:17px;line-height:1.5;margin:0 0 26px;max-width:780px;}
+    .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+    .tile{background:rgba(255,255,255,.075);border:1px solid var(--line);border-radius:22px;padding:18px;min-height:190px;}
+    .tile b{display:block;color:#7DF4E6;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+    .tile h3{font-size:18px;line-height:1.15;margin:0 0 10px;letter-spacing:-.45px;}
+    .tile p{font-size:13.5px;line-height:1.45;color:#C9D7E8;margin:0;}
+    .signup{display:grid;grid-template-columns:1fr .78fr;gap:24px;align-items:center;background:linear-gradient(135deg,rgba(37,99,235,.24),rgba(20,184,166,.18));border:1px solid var(--line);border-radius:30px;padding:30px;margin:36px 0 8px;box-shadow:var(--shadow)}
+    .signup h2{font-size:31px;letter-spacing:-1px;line-height:1.06;margin:0 0 12px}
+    .signup p{color:#D8E7F5;margin:0;font-size:16px;line-height:1.5}
+    .form-note{background:rgba(11,18,32,.62);border:1px solid var(--line);border-radius:22px;padding:18px;color:#D8E7F5;font-size:14px;line-height:1.45;}
+    footer{padding:34px 0 44px;color:#92A5BA;font-size:13px;display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);margin-top:30px;}
+    @media (max-width:900px){.hero{grid-template-columns:1fr;padding-top:42px}.grid{grid-template-columns:1fr 1fr}.signup{grid-template-columns:1fr}.nav-note{text-align:left}header{align-items:flex-start;flex-direction:column}.visual{min-height:360px}}
+    @media (max-width:560px){.wrap{width:min(100% - 26px,1120px)}h1{letter-spacing:-2px}.grid{grid-template-columns:1fr}.tile{min-height:auto}.cta-row .btn{width:100%}footer{flex-direction:column}.brief-title{font-size:25px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="https://g-nosis.com" aria-label="G-Nosis Systems">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 292 292" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="146" cy="146" r="112" fill="none" stroke="#F5FAFF" stroke-width="8" opacity=".95"/>
+            <circle cx="146" cy="146" r="44" fill="rgba(245,250,255,.22)"/>
+            <circle cx="146" cy="146" r="17" fill="#0B1220"/><circle cx="146" cy="146" r="8" fill="#14B8A6"/>
+          </svg>
+        </div>
+        <div><div class="brand-name">G-Nosis Systems</div><div class="tag">Insight, engineered.</div></div>
+      </a>
+      <div class="nav-note">Free briefing · May 2026 · AI development ranked by business impact</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> AI Development Brief</div>
+          <h1>May’s AI shift is bigger than model news.</h1>
+          <p class="lead">A concise five-page briefing on the AI developments that matter most for operators, founders, consultants, and business leaders: enterprise AI services, agentic workflows, finance automation, workflow templates, and infrastructure.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="ai-development-may-2026-impact-brief.pdf" download>Download the PDF</a>
+            <a class="btn btn-secondary" href="ai-development-may-2026-impact-brief.pdf" target="_blank" rel="noopener">View in browser</a>
+          </div>
+          <div class="trust">Built by G-Nosis Systems for practical AI adoption — not hype cycles.</div>
+        </div>
+
+        <div class="visual" aria-label="Preview of AI impact brief">
+          <div class="brief-card">
+            <div>
+              <div class="brief-rule"></div>
+              <div class="brief-title">May 2026 AI Impact Brief</div>
+              <div class="brief-sub">Five AI developments ranked by business impact, with practical takeaways for companies deciding where to invest next.</div>
+              <div class="rank-list">
+                <div class="rank"><div class="num">1</div><span>Enterprise AI services</span></div>
+                <div class="rank"><div class="num">2</div><span>Agentic workflow depth</span></div>
+                <div class="rank"><div class="num">3</div><span>CFO and finance agents</span></div>
+                <div class="rank"><div class="num">4</div><span>Workflow templates</span></div>
+                <div class="rank"><div class="num">5</div><span>AI infrastructure</span></div>
+              </div>
+            </div>
+            <div class="brief-sub"><strong>G-Nosis Systems</strong> · Insight, engineered.</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">What’s inside</h2>
+        <p class="section-lead">The brief filters the noise into five business-relevant shifts and explains why each one changes implementation strategy.</p>
+        <div class="grid">
+          <article class="tile"><b>01</b><h3>Enterprise AI services</h3><p>Why frontier labs are moving toward implementation-led delivery models.</p></article>
+          <article class="tile"><b>02</b><h3>Agentic adoption</h3><p>Why AI advantage is now measured by workflow depth, not seat count.</p></article>
+          <article class="tile"><b>03</b><h3>Finance agents</h3><p>Why CFO workflows are becoming one of the first serious AI automation markets.</p></article>
+          <article class="tile"><b>04</b><h3>Workflow templates</h3><p>Why the winning AI product may be a packaged workflow, not a blank chatbot.</p></article>
+          <article class="tile"><b>05</b><h3>Infrastructure</h3><p>How compute, networking, and regional capacity now shape AI product quality.</p></article>
+        </div>
+      </section>
+
+      <section class="signup">
+        <div>
+          <h2>For practical operators tracking AI development.</h2>
+          <p>This landing page is designed to support the upcoming free AI Development Newsletter from G-Nosis Systems — concise, prioritized, and focused on business impact.</p>
+        </div>
+        <div class="form-note">
+          <strong>Next step:</strong> connect this page to the newsletter signup form once the publishing platform is selected. For now, the primary call-to-action is the PDF download.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© 2026 G-Nosis Systems · Tomball, TX</div>
+      <div>AI development brief · Draft landing page for approval</div>
+    </footer>
+  </div>
+</body>
+</html>
