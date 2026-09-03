@@ -1,4 +1,4 @@
-const PDF_PATH = '/ai-development-june-2026-impact-brief.pdf';
+const PDF_PATH = '/ai-development-august-2026-impact-brief.pdf';
 const MAX_RECENT_EVENTS = 50;
 
 function json(data, init = {}) {
@@ -35,9 +35,27 @@ async function ensureSchema(env) {
       referer TEXT,
       ua TEXT,
       country TEXT,
+      region TEXT,
+      city TEXT,
       ip_hash TEXT
     )
   `).run();
+
+  // Backfill schema for the already-live table. D1/SQLite lacks IF NOT EXISTS
+  // for ADD COLUMN, so ignore duplicate-column errors on subsequent requests.
+  for (const columnSql of [
+    'ALTER TABLE pdf_downloads ADD COLUMN region TEXT',
+    'ALTER TABLE pdf_downloads ADD COLUMN city TEXT'
+  ]) {
+    try {
+      await env.DB.prepare(columnSql).run();
+    } catch (err) {
+      if (!String(err?.message || err).toLowerCase().includes('duplicate column')) {
+        throw err;
+      }
+    }
+  }
+
   await env.DB.prepare('CREATE INDEX IF NOT EXISTS idx_pdf_downloads_ts ON pdf_downloads(ts DESC)').run();
 }
 
@@ -48,6 +66,8 @@ async function recordDownload(request, env, url) {
     referer: request.headers.get('referer') || null,
     ua: request.headers.get('user-agent') || null,
     country: request.cf?.country || null,
+    region: request.cf?.region || request.cf?.regionCode || null,
+    city: request.cf?.city || null,
     ipHash: anonymizedIpHash(clientIp(request)),
     ts: new Date().toISOString()
   };
@@ -61,9 +81,9 @@ async function recordDownload(request, env, url) {
 
   await ensureSchema(env);
   await env.DB.prepare(`
-    INSERT INTO pdf_downloads (ts, path, referer, ua, country, ip_hash)
-    VALUES (?, ?, ?, ?, ?, ?)
-  `).bind(event.ts, event.path, event.referer, event.ua, event.country, event.ipHash).run();
+    INSERT INTO pdf_downloads (ts, path, referer, ua, country, region, city, ip_hash)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  `).bind(event.ts, event.path, event.referer, event.ua, event.country, event.region, event.city, event.ipHash).run();
 
   return { counted: true, event };
 }
@@ -84,14 +104,14 @@ async function stats(request, env) {
   await ensureSchema(env);
   const totalRow = await env.DB.prepare('SELECT COUNT(*) AS total FROM pdf_downloads').first();
   const recentRows = await env.DB.prepare(`
-    SELECT ts, path, referer, ua, country, ip_hash AS ipHash
+    SELECT ts, path, referer, ua, country, region, city, ip_hash AS ipHash
     FROM pdf_downloads
     ORDER BY ts DESC
     LIMIT ?
   `).bind(MAX_RECENT_EVENTS).all();
 
   return json({
-    newsletter: 'June 2026 AI Impact Brief',
+    newsletter: 'August 2026 AI Impact Brief',
     pdf: PDF_PATH,
     totalDownloads: Number(totalRow?.total || 0),
     recentDownloads: recentRows.results || [],
