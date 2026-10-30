@@ -1,4 +1,4 @@
-const PDF_PATH = '/ai-development-september-2026-impact-brief.pdf';
+const PDF_PATH = '/ai-development-october-2026-impact-brief.pdf';
 const MAX_RECENT_EVENTS = 50;
 
 function json(data, init = {}) {
@@ -111,7 +111,7 @@ async function stats(request, env) {
   `).bind(MAX_RECENT_EVENTS).all();
 
   return json({
-    newsletter: 'September 2026 AI Impact Brief',
+    newsletter: 'October 2026 AI Impact Brief',
     pdf: PDF_PATH,
     totalDownloads: Number(totalRow?.total || 0),
     recentDownloads: recentRows.results || [],
