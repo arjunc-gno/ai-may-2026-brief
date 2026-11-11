@@ -1,6 +1,6 @@
-# May 2026 AI Impact Brief
+# October 2026 AI Impact Brief
 
-A branded G-Nosis Systems landing page for the May 2026 AI Impact Brief.
+A branded G-Nosis Systems landing page for the October 2026 AI Impact Brief.
 
 Published via Cloudflare Workers static assets at https://ai.g-nosis.com.
 
