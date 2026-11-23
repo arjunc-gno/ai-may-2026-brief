@@ -119,6 +119,27 @@ async function stats(request, env) {
   });
 }
 
+async function styledNotFound(request, env) {
+  try {
+    // Wrangler/Pages exposes the static 404 document at /404 in local dev.
+    const fallbackUrl = new URL('/404', request.url);
+    const fallback = await env.ASSETS.fetch(new Request(fallbackUrl, request));
+    const headers = new Headers(fallback.headers);
+    headers.set('cache-control', 'no-store');
+    return new Response(request.method === 'HEAD' ? null : fallback.body, {
+      status: 404,
+      statusText: 'Not Found',
+      headers
+    });
+  } catch (err) {
+    console.warn('static 404 fallback failed', String(err?.message || err));
+    return new Response('<!doctype html><title>Page not found</title><h1>Page not found</h1><p><a href="/">Return home</a></p>', {
+      status: 404,
+      headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' }
+    });
+  }
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -136,6 +157,13 @@ export default {
       return new Response('Not found', { status: 404 });
     }
 
-    return env.ASSETS.fetch(request);
+    try {
+      const asset = await env.ASSETS.fetch(request);
+      if (asset.status !== 404) return asset;
+    } catch (err) {
+      console.warn('asset lookup failed', url.pathname, String(err?.message || err));
+    }
+
+    return styledNotFound(request, env);
   }
 };

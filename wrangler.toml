@@ -3,7 +3,7 @@ name = "ai-may-2026-brief"
 compatibility_date = "2026-05-07"
 account_id = "8a9b68fe08ceae5d4e5826c6f25dcb31"
 
-assets = { directory = "public" }
+assets = { directory = "public", binding = "ASSETS" }
 
 # Durable PDF download counter.
 [[d1_databases]]

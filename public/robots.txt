@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ai.g-nosis.com/sitemap.xml
